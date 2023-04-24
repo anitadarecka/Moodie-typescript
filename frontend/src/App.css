@@ -1,0 +1,66 @@
+:root {
+  --bg-color: black;
+  --green-color: #109b55;
+  --pink-color: #ffc1bb;
+  --corail-color: #f48267;
+  --blue-color: #8d89ff;
+  --text-color: white;
+  --sidebar-bg-color: rgba(255, 255, 255, 0.08);
+  --hover-color: rgba(171, 171, 171, 0.6);
+  --title-size: 60px;
+  --sub-heading-size: 26px;
+  --text-size: 15px;
+  --font-family: "Poppins";
+  --blur-hover: blur(20px);
+  --separation-line: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow: hidden;
+  cursor: default;
+}
+
+.App {
+  text-align: center;
+}
+
+.home {
+  display: flex;
+  flex-direction: row;
+}
+
+#logo-desktop {
+  width: 60%;
+}
+
+.content hr {
+  width: 95%;
+  border-top: var(--separation-line);
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  margin: 3vh 3vh;
+}
+
+a[href],
+input[type="submit"],
+input[type="image"],
+input[type="button"],
+div[role="button"],
+li[role="presentation"],
+label[for],
+select,
+button,
+.pointer {
+  cursor: pointer;
+}

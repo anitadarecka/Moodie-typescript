@@ -1,0 +1,23 @@
+.video-content {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  position: relative;
+  z-index: 100;
+}
+
+.videointro {
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  width: 50%;
+}
+
+@media (max-width: 767px) {
+  .videointro {
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    width: 50%;
+  }
+}

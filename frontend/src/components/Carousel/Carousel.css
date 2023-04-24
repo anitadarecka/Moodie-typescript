@@ -1,0 +1,159 @@
+.carousel-content {
+  display: flex;
+  flex-direction: row;
+  gap: 2vh;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 5vh;
+}
+
+.carousel-cards {
+  display: grid;
+  width: 100%;
+  align-items: center;
+  perspective: 1000px;
+  perspective-origin: center;
+  justify-content: center;
+  background-color: var(--sidebar-bg-color);
+  box-shadow: 0px 0px 100px 100px var(--sidebar-bg-color);
+}
+
+.carousel-card {
+  grid-area: 1 / 1;
+  width: calc(0.95 * 300px);
+  height: calc(0.95 * 460px);
+  background-size: calc(0.95 * 300px) calc(0.95 * 460px);
+  transform: translateX(calc(50% * var(--offset))) rotateY(var(--rotate))
+    scale(var(--scale));
+  transform-origin: center;
+  z-index: var(--zindex);
+  position: relative;
+  transition: var(--transform-transition), opacity 0.2s linear;
+  opacity: var(--opacity);
+}
+
+.carousel-card:hover .overlay {
+  opacity: 1;
+}
+
+.carousel-card .title-movie {
+  font-size: 1.2rem;
+}
+
+.carousel-card .synopsis-movie {
+  font-size: 1rem;
+}
+
+.carousel-card .favourite-button {
+  width: 27px;
+  height: 27px;
+  margin-top: 0px;
+  margin-right: 0px;
+  fill: var(--fill-color);
+}
+
+.carousel-card .favourite-button:hover {
+  fill: var(--fill-color);
+}
+
+.carousel-card .add-button {
+  width: 27px;
+  height: 27px;
+}
+
+.shuffle-btn {
+  margin: -3vh auto 0 auto;
+  width: 50px;
+  transition: transform 0.1s linear;
+}
+
+.shuffle-btn:hover {
+  transform: scale(1.1);
+}
+
+.shuffle-btn:active {
+  transform: scale(1);
+}
+
+#prev {
+  transform: scale(-1);
+  transition: all 0.1s linear;
+  z-index: 3;
+  width: 5vh;
+}
+
+#prev:hover {
+  transform: scale(-1.1);
+}
+
+#next {
+  transform: scale(1);
+  transition: all 0.1s linear;
+  z-index: 3;
+  width: 5vh;
+}
+
+#next:hover {
+  transform: scale(1.1);
+}
+
+.filter-surpriseme {
+  filter: brightness(0) saturate(100%) invert(73%) sepia(13%) saturate(6713%)
+    hue-rotate(317deg) brightness(100%) contrast(92%);
+}
+
+.filter-notmyday {
+  filter: brightness(0) saturate(100%) invert(53%) sepia(16%) saturate(1759%)
+    hue-rotate(203deg) brightness(105%) contrast(101%);
+}
+
+.filter-filter {
+  filter: brightness(0) saturate(100%) invert(98%) sepia(19%) saturate(5251%)
+    hue-rotate(291deg) brightness(101%) contrast(130%);
+}
+
+/* // Mobile Version // */
+
+@media only screen and (max-width: 767px) {
+  .carousel-card {
+    opacity: var(--opacity-mobile);
+    width: calc(0.75 * 300px);
+    height: calc(0.75 * 460px);
+    background-size: calc(0.75 * 300px) calc(0.75 * 460px);
+  }
+
+  .carousel-content {
+    gap: 3vw;
+    margin: 3vw;
+  }
+
+  #prev {
+    transform: scale(-0.8);
+    transition: all 0.1s linear;
+    z-index: 1;
+  }
+
+  #prev:hover {
+    transform: scale(-1);
+  }
+
+  #next {
+    transform: scale(0.8);
+    transition: all 0.1s linear;
+    z-index: 1;
+  }
+
+  #next:hover {
+    transform: scale(1);
+  }
+
+  .shuffle-btn {
+    margin-top: 6vh;
+    text-align: center;
+    border-color: 1px solid antiquewhite;
+  }
+
+  hr {
+    display: none;
+  }
+}

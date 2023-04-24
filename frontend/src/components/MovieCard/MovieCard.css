@@ -1,0 +1,117 @@
+.movie-card {
+  width: 200px;
+  height: 300px;
+  position: relative;
+}
+
+.overlay {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  overflow-y: scroll;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+  background-color: rgba(72, 72, 72, 0.31);
+  backdrop-filter: var(--blur-hover);
+}
+
+.movie-card:hover .overlay {
+  opacity: 1;
+}
+
+.content-movie {
+  text-align: left;
+  margin: 15px;
+  position: relative;
+}
+
+.title-movie {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.synopsis-movie {
+  font-size: 13px;
+}
+
+.favourite-button {
+  width: 25px;
+  height: 25px;
+  margin-top: 0px;
+  margin-right: 0px;
+  fill: var(--fill-color);
+}
+
+.movie-cards-favorites .favourite-button {
+  width: 25px;
+  height: 25px;
+  margin-top: 0px;
+  margin-right: 0px;
+  fill: var(--corail-color);
+}
+
+.favourite-button:hover {
+  fill: var(--corail-color);
+  animation: lds-heart 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes lds-heart {
+  0% {
+    transform: scale(1);
+  }
+
+  5% {
+    transform: scale(1.1);
+  }
+
+  39% {
+    transform: scale(0.85);
+  }
+
+  45% {
+    transform: scale(1.1);
+  }
+
+  60% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.add-button {
+  width: 25px;
+  height: 25px;
+  margin-top: 0px;
+}
+
+.icons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+  .movie-description-window {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 4;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    background-image: none;
+    background-size: cover;
+    background-color: black;
+  }
+}

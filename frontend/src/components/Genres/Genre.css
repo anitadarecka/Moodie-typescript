@@ -1,0 +1,14 @@
+@media only screen and (max-width: 767px) {
+  .genre-list .movie-card {
+    width: calc(0.4 * 300px);
+    height: calc(0.4 * 460px);
+    background-size: calc(0.4 * 300px) calc(0.4 * 460px);
+  }
+
+  .genre-list .movie-cards {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 8vh;
+  }
+}

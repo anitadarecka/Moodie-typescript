@@ -1,0 +1,115 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  width: 85%;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.side-bar {
+  background-color: var(--sidebar-bg-color);
+  height: 100vh;
+  width: 210px;
+  display: fixed;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.mood-title h1 {
+  display: flex;
+  justify-content: flex-start;
+  color: var(--green-color);
+  font-weight: 500;
+  margin-left: 0%;
+  margin-top: 3%;
+}
+
+.carousel {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  color: white;
+  gap: 2vh;
+  width: 90%;
+  margin: 0vh auto;
+}
+
+.movie-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4vh 4vh;
+}
+
+.movie-cards-favorites {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4vh 4vh;
+}
+
+.playlistList {
+  padding-bottom: 5vh;
+  width: 100vw;
+}
+
+.genre-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: 90%;
+  margin: 0vh auto;
+}
+
+.genre-list {
+  margin-top: 2vh;
+}
+
+h4 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+#doodle {
+  position: absolute;
+  right: 0%;
+  top: 45%;
+  z-index: 0;
+  width: clamp(200px, 30vw, 360px);
+}
+
+.content hr {
+  width: 100%;
+  border-top: 1px solid var(--sidebar-bg-color);
+  margin: 3vh 3vh;
+}
+
+/* // Mobile Version // */
+
+@media only screen and (max-width: 767px) {
+  .mood-title h1 {
+    font-size: 1.7rem;
+    margin-top: 7%;
+  }
+
+  .content {
+    width: 100%;
+    margin-top: 8vh;
+  }
+
+  .movie-cards {
+    display: flex;
+    flex-direction: inherit;
+  }
+
+  .playlistlist {
+    margin-left: 10vw;
+  }
+}
