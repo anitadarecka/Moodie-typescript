@@ -19,10 +19,11 @@ const App = () => {
   const [displayVideo, setDisplayVideo] = useState(true);
   const [isFilter, setIsFilter] = useState(false);
   setTimeout(() => setDisplayVideo(false), 5000);
+  // const handleMoodChange = (newMood: string) => {
   const handleMoodChange = (event: React.MouseEvent<HTMLInputElement>) => {
     const newMood: string = event.currentTarget.value;
-    console.log(newMood);
     setMood(newMood);
+    console.log(newMood);
     setIsLoading(true);
     switch (newMood) {
       case "Happy":

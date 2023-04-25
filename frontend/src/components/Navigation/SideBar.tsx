@@ -7,7 +7,7 @@ import Button from "../Buttons/Button";
 
 interface SideBarProps {
   mood: string;
-  handleMoodChange: React.MouseEventHandler<HTMLLIElement | HTMLInputElement>;
+  handleMoodChange: React.MouseEventHandler<HTMLInputElement | HTMLButtonElement>;
   genreList: { id: number; name: string }[];
   setGenreId: Dispatch<SetStateAction<number>>;
   setGenreName: Dispatch<SetStateAction<string>>;
@@ -27,12 +27,12 @@ const SideBar = ({
   setGenreName,
 }: SideBarProps) => {
   const handleGenreChange = (
-    e: React.MouseEvent<HTMLLIElement>,
+    e: React.MouseEvent<HTMLButtonElement>,
     genre: GenreProps
   ) => {
     console.log(e);
     e.preventDefault();
-    handleMoodChange(e);
+    handleMoodChange("Genre");
     setGenreId(genre.id);
     setGenreName(genre.name);
   };
@@ -42,9 +42,6 @@ const SideBar = ({
         role="button"
         className="logo-desktop"
         onClick={() => {
-          window.location.href = "http://localhost:3000";
-        }}
-        onKeyPress={() => {
           window.location.href = "http://localhost:3000";
         }}
         tabIndex={0}
@@ -65,20 +62,18 @@ const SideBar = ({
                 <path d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z" />
               </svg>
             </div>
-            <li
+            <button
               role="presentation"
               value="Favorites"
               onClick={handleMoodChange}
-            >
-              <h3>Favorites</h3>
-            </li>
+            ><h3>Favorites</h3></button>
           </div>
           <div className="genres-menu">
             <h3>Genres</h3>
             <div className="genres">
               <ul>
                 {genreList.map((el, index) => (
-                  <li
+                  <button
                     key={el.id}
                     role="presentation"
                     tabIndex={index}
@@ -86,7 +81,7 @@ const SideBar = ({
                     onClick={(e) => handleGenreChange(e, el)}
                   >
                     {el.name}
-                  </li>
+                  </button>
                 ))}
               </ul>
             </div>
