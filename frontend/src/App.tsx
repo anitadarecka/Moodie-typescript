@@ -23,7 +23,6 @@ const App = () => {
   const handleMoodChange = (event: React.MouseEvent<HTMLInputElement>) => {
     const newMood: string = event.currentTarget.value;
     setMood(newMood);
-    console.log(newMood);
     setIsLoading(true);
     switch (newMood) {
       case "Happy":

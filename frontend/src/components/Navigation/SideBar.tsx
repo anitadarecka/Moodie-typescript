@@ -30,9 +30,7 @@ const SideBar = ({
     e: React.MouseEvent<HTMLButtonElement>,
     genre: GenreProps
   ) => {
-    console.log(e);
-    e.preventDefault();
-    handleMoodChange("Genre");
+    handleMoodChange(e);
     setGenreId(genre.id);
     setGenreName(genre.name);
   };
