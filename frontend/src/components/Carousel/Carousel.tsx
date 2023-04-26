@@ -26,9 +26,9 @@ interface CarouselData {
 }
 
 type CarouselProps = {
-  mood: string,
-  carouselData: CarouselData[],
-}
+  mood: string;
+  carouselData: CarouselData[];
+};
 
 const Carousel = ({ mood, carouselData }: CarouselProps) => {
   const { value } = useDescription();
