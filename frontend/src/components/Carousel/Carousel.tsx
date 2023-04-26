@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import CarouselCard from "./CarouselCard";
 import moods from "../../tools/moods";
@@ -8,7 +8,29 @@ import "./Carousel.css";
 import MovieDescription from "../MovieDescription/MovieDescription";
 import { useDescription } from "../MovieDescription/DescriptionContext";
 
-const Carousel = ({ mood, carouselData }) => {
+interface CarouselData {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: [number, number, number];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path?: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+type CarouselProps = {
+  mood: string,
+  carouselData: CarouselData[],
+}
+
+const Carousel = ({ mood, carouselData }: CarouselProps) => {
   const { value } = useDescription();
   const [active, setActive] = useState(10);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
@@ -35,7 +57,7 @@ const Carousel = ({ mood, carouselData }) => {
       setTransitionEnabled(true);
     }
   }, [active]);
-  const [modalId, setModalId] = useState();
+  const [modalId, setModalId] = useState<number | undefined>();
   return (
     <>
       <div className="carousel-content">
@@ -153,7 +175,7 @@ const Carousel = ({ mood, carouselData }) => {
       )}
       {value && (
         <div className="movie-description-window">
-          <MovieDescription movieId={modalId} />
+          <MovieDescription movieId={modalId!} />
         </div>
       )}
     </>

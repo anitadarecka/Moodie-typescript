@@ -13,7 +13,7 @@ type CarouselCardProps = {
   title: string;
   synopsis: string;
   movieId: number;
-  setModalId: Dispatch<SetStateAction<number>>;
+  setModalId: Dispatch<SetStateAction<number | undefined>>;
 };
 
 type StylesProps = {
