@@ -7,7 +7,9 @@ import Button from "../Buttons/Button";
 
 interface SideBarProps {
   mood: string;
-  handleMoodChange: React.MouseEventHandler<HTMLInputElement | HTMLButtonElement>;
+  handleMoodChange: React.MouseEventHandler<
+    HTMLInputElement | HTMLButtonElement
+  >;
   genreList: { id: number; name: string }[];
   setGenreId: Dispatch<SetStateAction<number>>;
   setGenreName: Dispatch<SetStateAction<string>>;
@@ -64,7 +66,9 @@ const SideBar = ({
               role="presentation"
               value="Favorites"
               onClick={handleMoodChange}
-            ><h3>Favorites</h3></button>
+            >
+              <h3>Favorites</h3>
+            </button>
           </div>
           <div className="genres-menu">
             <h3>Genres</h3>

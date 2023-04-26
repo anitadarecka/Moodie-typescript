@@ -8,7 +8,6 @@ import Videointro from "./pages/Video-intro";
 import { FavoritesProvider } from "./components/Favorites/FavoritesContext";
 
 const App = () => {
-  // api call, recupere la base de donnes
   const API_KEY: string = import.meta.env.VITE_API_KEY;
   const { genres } = MovieFind[0];
   const [genre, setGenre] = useState<number | null>();
@@ -19,8 +18,9 @@ const App = () => {
   const [displayVideo, setDisplayVideo] = useState(true);
   const [isFilter, setIsFilter] = useState(false);
   setTimeout(() => setDisplayVideo(false), 5000);
-  // const handleMoodChange = (newMood: string) => {
-  const handleMoodChange = (event: React.MouseEvent<HTMLInputElement>) => {
+  const handleMoodChange = (
+    event: React.MouseEvent<HTMLInputElement | HTMLButtonElement>
+  ) => {
     const newMood: string = event.currentTarget.value;
     setMood(newMood);
     setIsLoading(true);

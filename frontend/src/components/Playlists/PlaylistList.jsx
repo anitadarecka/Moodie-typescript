@@ -7,7 +7,7 @@ import Shuffle from "../../tools/Shuffle";
 import { DescriptionProvider } from "../MovieDescription/DescriptionContext";
 
 const PlaylistList = ({ name, keywordslist, genrelist, mood }) => {
-  const API_KEY = "fac24f9047cf7762d3a3976d29d6c169";
+  const API_KEY = import.meta.env.VITE_API_KEY;
   const keywords = keywordslist.join("|");
   const genres = genrelist.length > 1 ? genrelist.join("|") : genrelist;
   const [playlistData, setPlaylistData] = useState([]);

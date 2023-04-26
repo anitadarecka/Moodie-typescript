@@ -9,7 +9,7 @@ import play from "../../assets/play.png";
 import { useFavorites } from "../Favorites/FavoritesContext";
 
 const MovieDescription = ({ movieId }) => {
-  const API_KEY = "fac24f9047cf7762d3a3976d29d6c169";
+  const API_KEY = import.meta.env.VITE_API_KEY;
   const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&append_to_response=videos,credits`;
   const [movieInfo, setMovieInfo] = useState();
   const { onChange } = useDescription();
