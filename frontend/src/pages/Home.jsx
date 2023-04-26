@@ -195,7 +195,7 @@ Home.propTypes = {
   movieData: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      poster_path: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
       overview: PropTypes.string.isRequired,
       original_title: PropTypes.string.isRequired,
     })

@@ -26,6 +26,17 @@
   font-size: 1.1em;
 }
 
+.sidebar button {
+  all: unset;
+  cursor: pointer;
+  padding: 0.2vh;
+  transition: all 0.1s linear;
+}
+
+.sidebar button:hover {
+  letter-spacing: 2px;
+}
+
 .logo-desktop img {
   width: 6.5rem;
   position: absolute;
@@ -52,13 +63,13 @@
 }
 
 .sidebar li {
-  transition: all 0.3s linear;
+  transition: all 0.1s linear;
   padding: 0.2vh;
 }
 
 .sidebar li:hover {
-  transform: scale(1.2);
-  transform-origin: left;
+  /* transform: scale(1.2); */
+  letter-spacing: 2px;
 }
 
 .genres-menu h3,
