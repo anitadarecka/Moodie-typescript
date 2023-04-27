@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import ReactPlayer from "react-player";
@@ -8,13 +8,71 @@ import "./rating.css";
 import play from "../../assets/play.png";
 import { useFavorites } from "../Favorites/FavoritesContext";
 
-const MovieDescription = ({ movieId }) => {
+type MovieDescriptionProps = {
+  movieId: number;
+};
+
+interface Movie {
+  adult: boolean;
+  backdrop_path: string;
+  belongs_to_collection: null | any;
+  budget: number;
+  credits: {
+    cast: Array<any>;
+    crew: Array<any>;
+  };
+  genres: Array<{
+    id: number;
+    name: string;
+  }>;
+  homepage: string;
+  id: number;
+  imdb_id: string;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  production_companies: Array<{
+    id: number;
+    logo_path: string | null;
+    name: string;
+    origin_country: string;
+  }>;
+  production_countries: Array<{
+    iso_3166_1: string;
+    name: string;
+  }>;
+  release_date: string;
+  revenue: number;
+  runtime: number;
+  spoken_languages: Array<{
+    english_name: string;
+    iso_639_1: string;
+    name: string;
+  }>;
+  status: string;
+  tagline: string;
+  title: string;
+  video: boolean;
+  videos: {
+    results: Array<any>;
+  };
+  vote_average: number;
+  vote_count: number;
+}
+
+type StylesProps = {
+  [key: string]: unknown;
+};
+
+const MovieDescription = ({ movieId }: MovieDescriptionProps) => {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&append_to_response=videos,credits`;
-  const [movieInfo, setMovieInfo] = useState();
+  const [movieInfo, setMovieInfo] = useState<Movie>();
   const { onChange } = useDescription();
-  const { favorite, handleFavorites } = useFavorites();
-  const isFavorite = favorite.includes(movieId);
+  const { favorites, handleFavorites } = useFavorites();
+  const isFavorite = favorites.includes(movieId);
   const [playVideo, setPlayVideo] = useState(false);
   useEffect(() => {
     axios
@@ -22,6 +80,9 @@ const MovieDescription = ({ movieId }) => {
       .then((response) => response.data)
       .then((data) => setMovieInfo(data));
   }, []);
+  const styles: StylesProps = {
+    "--fill-color": isFavorite ? "var(--corail-color)" : "var(--text-color)",
+  };
   return (
     <>
       {movieInfo && (
@@ -45,7 +106,6 @@ const MovieDescription = ({ movieId }) => {
             role="button"
             className="xbutton"
             onClick={() => onChange(false)}
-            onKeyPress={() => onChange(false)}
             tabIndex={0}
           >
             <input
@@ -87,11 +147,7 @@ const MovieDescription = ({ movieId }) => {
               viewBox="0 0 24 24"
               type="button"
               className="favourite-button-description"
-              style={{
-                "--fill-color": isFavorite
-                  ? "var(--corail-color)"
-                  : "var(--text-color)",
-              }}
+              style={styles}
               onClick={() => handleFavorites(movieId)}
             >
               <path d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z" />
@@ -116,23 +172,23 @@ const MovieDescription = ({ movieId }) => {
           className="video-container"
           role="button"
           onClick={() => setPlayVideo(!playVideo)}
-          onKeyPress={() => setPlayVideo(!playVideo)}
           tabIndex={0}
         >
           <div className="trailer">
-            {movieInfo.videos.results
-              .filter((el) => el.type === "Trailer")
-              .map(
-                (el, index) =>
-                  index === 0 && (
-                    <ReactPlayer
-                      url={`https://www.youtube.com/watch?v=${el.key}`}
-                      playing="true"
-                      width="calc(1.5*640px)"
-                      height="calc(1.5*360px)"
-                    />
-                  )
-              )}
+            {movieInfo &&
+              movieInfo.videos.results
+                .filter((el) => el.type === "Trailer")
+                .map(
+                  (el, index) =>
+                    index === 0 && (
+                      <ReactPlayer
+                        url={`https://www.youtube.com/watch?v=${el.key}`}
+                        playing
+                        width="calc(2*640px)"
+                        height="calc(2*360px)"
+                      />
+                    )
+                )}
           </div>
         </div>
       )}

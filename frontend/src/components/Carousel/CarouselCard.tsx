@@ -42,8 +42,8 @@ const CarouselCard = ({
     "--transform-transition": transitionEnabled ? "transform 0.3s linear" : "",
   };
   const { onChange } = useDescription();
-  const { favorite, handleFavorites } = useFavorites();
-  const isFavorite = favorite.includes(movieId);
+  const { favorites, handleFavorites } = useFavorites();
+  const isFavorite = favorites.includes(movieId);
   const stylesHeart: StylesProps = {
     "--fill-color": isFavorite ? "var(--corail-color)" : "var(--text-color)",
   };
