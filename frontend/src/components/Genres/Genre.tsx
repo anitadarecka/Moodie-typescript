@@ -6,10 +6,10 @@ import { DescriptionProvider } from "../MovieDescription/DescriptionContext";
 import "./Genre.css";
 
 type GenreProps = {
-  genreId: number,
-  genreName: string,
-  API_KEY: string,
-}
+  genreId: number;
+  genreName: string;
+  API_KEY: string;
+};
 
 interface MovieData {
   adult: boolean;
@@ -43,8 +43,7 @@ const Genre = ({ genreId, genreName, API_KEY }: GenreProps) => {
         <h2>{genreName}</h2>
       </div>
       <div className="movie-cards">
-        {genreMovieData.map((el) =>
-        (
+        {genreMovieData.map((el) => (
           <DescriptionProvider key={el.id}>
             <MovieCard
               key={el.id}
@@ -54,8 +53,7 @@ const Genre = ({ genreId, genreName, API_KEY }: GenreProps) => {
               movieId={el.id}
             />
           </DescriptionProvider>
-        )
-        )}
+        ))}
       </div>
     </>
   );

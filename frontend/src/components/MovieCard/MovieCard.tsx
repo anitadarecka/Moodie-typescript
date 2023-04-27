@@ -7,11 +7,11 @@ import { useDescription } from "../MovieDescription/DescriptionContext";
 import { useFavorites } from "../Favorites/FavoritesContext";
 
 type MovieCardProps = {
-  movieId: number,
-  poster?: string,
-  title: string,
-  synopsis: string,
-}
+  movieId: number;
+  poster?: string;
+  title: string;
+  synopsis: string;
+};
 
 type StylesProps = {
   [key: string]: unknown;
@@ -22,9 +22,7 @@ const MovieCard = ({ movieId, poster, title, synopsis }: MovieCardProps) => {
   const { favorite, handleFavorites } = useFavorites();
   const isFavorite = favorite.includes(movieId);
   const styles: StylesProps = {
-    "--fill-color": isFavorite
-      ? "var(--corail-color)"
-      : "var(--text-color)",
+    "--fill-color": isFavorite ? "var(--corail-color)" : "var(--text-color)",
   };
   return (
     <div>
