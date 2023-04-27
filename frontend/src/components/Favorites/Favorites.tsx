@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../MovieCard/MovieCard";
 import { DescriptionProvider } from "../MovieDescription/DescriptionContext";
@@ -54,8 +54,8 @@ interface Movie {
 }
 
 type FavoritesProps = {
-  favoritesData: Movie[]
-}
+  favoritesData: Movie[];
+};
 
 const Favorites = ({ favoritesData }: FavoritesProps) => {
   return (

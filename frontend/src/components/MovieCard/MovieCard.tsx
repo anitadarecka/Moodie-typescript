@@ -19,8 +19,8 @@ type StylesProps = {
 
 const MovieCard = ({ movieId, poster, title, synopsis }: MovieCardProps) => {
   const { value, onChange } = useDescription();
-  const { favorite, handleFavorites } = useFavorites();
-  const isFavorite = favorite.includes(movieId);
+  const { favorites, handleFavorites } = useFavorites();
+  const isFavorite = favorites.includes(movieId);
   const styles: StylesProps = {
     "--fill-color": isFavorite ? "var(--corail-color)" : "var(--text-color)",
   };

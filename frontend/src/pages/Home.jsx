@@ -39,20 +39,20 @@ const Home = ({
       .then((data) => setMovieData(Shuffle(data.results)))
       .then(setTimeout(() => setIsLoading(false), 1000));
   }, [mood]);
-  const { favorite } = useFavorites();
+  const { favorites } = useFavorites();
   const [favoritesData, setFavoritesData] = useState([]);
   useEffect(() => {
-    if (favorite.length > 0) {
+    if (favorites.length > 0) {
       axios
         .get(
           `https://api.themoviedb.org/3/movie/${
-            favorite[favorite.length - 1]
+            favorites[favorites.length - 1]
           }?api_key=${API_KEY}`
         )
         .then((response) => response.data)
         .then((data) => setFavoritesData([...favoritesData, data]));
     }
-  }, [favorite]);
+  }, [favorites]);
   const url2 = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
   const [genreList, setGenreList] = useState([]);
   const [genreId, setGenreId] = useState();

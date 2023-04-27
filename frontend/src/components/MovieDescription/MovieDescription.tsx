@@ -71,8 +71,8 @@ const MovieDescription = ({ movieId }: MovieDescriptionProps) => {
   const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&append_to_response=videos,credits`;
   const [movieInfo, setMovieInfo] = useState<Movie>();
   const { onChange } = useDescription();
-  const { favorite, handleFavorites } = useFavorites();
-  const isFavorite = favorite.includes(movieId);
+  const { favorites, handleFavorites } = useFavorites();
+  const isFavorite = favorites.includes(movieId);
   const [playVideo, setPlayVideo] = useState(false);
   useEffect(() => {
     axios
