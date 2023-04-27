@@ -1,6 +1,12 @@
+import React from "react";
 import PropTypes from "prop-types";
 
-const MoodTitle = ({ mood, color }) => {
+type MoodTitleProps = {
+  mood: string;
+  color: string;
+};
+
+const MoodTitle = ({ mood, color }: MoodTitleProps) => {
   return <h1 style={{ color: `${color}` }}>{mood}</h1>;
 };
 
