@@ -35,7 +35,6 @@ const PlaylistList = ({ name, keywordslist, genrelist, mood }: PlaylistListProps
   const keywords = keywordslist.join("|");
   const genres = genrelist.length > 1 ? genrelist.join("|") : genrelist;
   const [playlistData, setPlaylistData] = useState<PlaylistData[]>([]);
-  console.log(playlistData);
   const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=true&page=1&with_original_language=en&with_genres=${genres}&with_keywords=${keywords}`;
   useEffect(() => {
     axios
