@@ -7,11 +7,11 @@ import Shuffle from "../../tools/Shuffle";
 import { DescriptionProvider } from "../MovieDescription/DescriptionContext";
 
 type PlaylistListProps = {
-  name: string,
-  keywordslist: number[],
-  genrelist: number[],
+  name: string;
+  keywordslist: number[];
+  genrelist: number[];
   mood: string;
-}
+};
 
 interface PlaylistData {
   adult: boolean;
@@ -30,7 +30,12 @@ interface PlaylistData {
   vote_count: number;
 }
 
-const PlaylistList = ({ name, keywordslist, genrelist, mood }: PlaylistListProps) => {
+const PlaylistList = ({
+  name,
+  keywordslist,
+  genrelist,
+  mood,
+}: PlaylistListProps) => {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const keywords = keywordslist.join("|");
   const genres = genrelist.length > 1 ? genrelist.join("|") : genrelist;

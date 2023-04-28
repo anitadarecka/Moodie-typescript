@@ -7,14 +7,31 @@ import MovieFind from "./tools/MovieFind";
 import Videointro from "./pages/Video-intro";
 import { FavoritesProvider } from "./components/Favorites/FavoritesContext";
 
+interface MovieData {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path?: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
 const App = () => {
   const API_KEY: string = import.meta.env.VITE_API_KEY;
   const { genres } = MovieFind[0];
   const [genre, setGenre] = useState<number | null>();
   const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=vote_count.desc&include_adult=false&include_video=true&page=1&with_original_language=en&with_genres=${genre}&with_watch_monetization_types=flatrate`;
-  const [movieData, setMovieData] = useState([]);
-  const [mood, setMood] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [movieData, setMovieData] = useState<MovieData[]>([]);
+  const [mood, setMood] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [displayVideo, setDisplayVideo] = useState(true);
   const [isFilter, setIsFilter] = useState(false);
   setTimeout(() => setDisplayVideo(false), 5000);
@@ -72,13 +89,12 @@ const App = () => {
             url={url}
             mood={mood}
             setMood={setMood}
-            // genre={genre}
             API_KEY={API_KEY}
           />
         </FavoritesProvider>
       ) : (
         <>
-          {/* <AnimatePresence>
+          <AnimatePresence>
             {displayVideo && (
               <motion.div
                 initial={{ opacity: 1 }}
@@ -88,7 +104,7 @@ const App = () => {
                 <Videointro />{" "}
               </motion.div>
             )}
-          </AnimatePresence> */}
+          </AnimatePresence>
           <Intro handleMoodChange={handleMoodChange} />
         </>
       )}
