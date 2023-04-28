@@ -70,7 +70,7 @@ const MovieDescription = ({ movieId }: MovieDescriptionProps) => {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&append_to_response=videos,credits`;
   const [movieInfo, setMovieInfo] = useState<Movie>();
-  const { onChange } = useDescription();
+  const { setShowDescription } = useDescription();
   const { favorites, handleFavorites } = useFavorites();
   const isFavorite = favorites.includes(movieId);
   const [playVideo, setPlayVideo] = useState(false);
@@ -105,7 +105,7 @@ const MovieDescription = ({ movieId }: MovieDescriptionProps) => {
           <div
             role="button"
             className="xbutton"
-            onClick={() => onChange(false)}
+            onClick={() => setShowDescription(false)}
             tabIndex={0}
           >
             <input

@@ -18,7 +18,7 @@ type StylesProps = {
 };
 
 const MovieCard = ({ movieId, poster, title, synopsis }: MovieCardProps) => {
-  const { value, onChange } = useDescription();
+  const { showDescription, setShowDescription } = useDescription();
   const { favorites, handleFavorites } = useFavorites();
   const isFavorite = favorites.includes(movieId);
   const styles: StylesProps = {
@@ -55,14 +55,14 @@ const MovieCard = ({ movieId, poster, title, synopsis }: MovieCardProps) => {
                 type="image"
                 src={play}
                 alt="play icon"
-                onClick={() => onChange(true)}
+                onClick={() => setShowDescription(true)}
               />
             </div>
             <div className="synopsis-movie">{synopsis}</div>
           </div>
         </div>
       </div>
-      {value && (
+      {showDescription && (
         <div className="movie-description-window">
           <MovieDescription movieId={movieId} />
         </div>

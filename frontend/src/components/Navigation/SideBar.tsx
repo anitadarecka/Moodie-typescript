@@ -11,7 +11,7 @@ interface SideBarProps {
     HTMLInputElement | HTMLButtonElement
   >;
   genreList: { id: number; name: string }[];
-  setGenreId: Dispatch<SetStateAction<number>>;
+  setGenreId: Dispatch<SetStateAction<number | null>>;
   setGenreName: Dispatch<SetStateAction<string>>;
 }
 [];

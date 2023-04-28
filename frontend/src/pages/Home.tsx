@@ -1,5 +1,5 @@
+import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
 import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
 import axios from "axios";
 import NavBar from "../components/Navigation/NavBar";
 import Genre from "../components/Genres/Genre";
@@ -18,6 +18,100 @@ import { useFavorites } from "../components/Favorites/FavoritesContext";
 import Favorites from "../components/Favorites/Favorites";
 import BurgerMenuIcon from "../assets/burger-menu.png";
 
+interface MovieData {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path?: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+interface Movie {
+  adult: boolean;
+  backdrop_path: string;
+  belongs_to_collection: null | any;
+  budget: number;
+  credits: {
+    cast: Array<any>;
+    crew: Array<any>;
+  };
+  genres: Array<{
+    id: number;
+    name: string;
+  }>;
+  homepage: string;
+  id: number;
+  imdb_id: string;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  production_companies: Array<{
+    id: number;
+    logo_path: string | null;
+    name: string;
+    origin_country: string;
+  }>;
+  production_countries: Array<{
+    iso_3166_1: string;
+    name: string;
+  }>;
+  release_date: string;
+  revenue: number;
+  runtime: number;
+  spoken_languages: Array<{
+    english_name: string;
+    iso_639_1: string;
+    name: string;
+  }>;
+  status: string;
+  tagline: string;
+  title: string;
+  video: boolean;
+  videos: {
+    results: Array<any>;
+  };
+  vote_average: number;
+  vote_count: number;
+}
+
+type HandleMoodChange = (
+  event: React.MouseEvent<HTMLInputElement | HTMLButtonElement>
+) => void;
+
+interface HomeProps {
+  movieData: MovieData[];
+  setMovieData: Dispatch<SetStateAction<MovieData[]>>;
+  handleMoodChange: HandleMoodChange;
+  isLoading: boolean;
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
+  isFilter: boolean;
+  setIsFilter: Dispatch<SetStateAction<boolean>>;
+  url: string;
+  mood: string;
+  setMood: Dispatch<SetStateAction<string>>;
+  API_KEY: string;
+}
+
+type StylesProps = {
+  [key: string]: unknown;
+};
+
+interface GenreList {
+  id: number;
+  name: string;
+}
+
 const Home = ({
   movieData,
   setMovieData,
@@ -30,17 +124,17 @@ const Home = ({
   mood,
   setMood,
   API_KEY,
-}) => {
+}: HomeProps) => {
   // get movieData
   useEffect(() => {
     axios
       .get(url)
       .then((response) => response.data)
       .then((data) => setMovieData(Shuffle(data.results)))
-      .then(setTimeout(() => setIsLoading(false), 1000));
+      .then(() => setTimeout(() => setIsLoading(false), 1000));
   }, [mood]);
   const { favorites } = useFavorites();
-  const [favoritesData, setFavoritesData] = useState([]);
+  const [favoritesData, setFavoritesData] = useState<Movie[]>([]);
   useEffect(() => {
     if (favorites.length > 0) {
       axios
@@ -54,8 +148,8 @@ const Home = ({
     }
   }, [favorites]);
   const url2 = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`;
-  const [genreList, setGenreList] = useState([]);
-  const [genreId, setGenreId] = useState();
+  const [genreList, setGenreList] = useState<GenreList[]>([]);
+  const [genreId, setGenreId] = useState<number | null>(null);
   const [genreName, setGenreName] = useState("");
   useEffect(() => {
     axios
@@ -64,6 +158,9 @@ const Home = ({
       .then((data) => setGenreList(data.genres));
   }, []);
   const [showBurger, setShowBurger] = useState(false);
+  const BurgerStyles: StylesProps = {
+    "--display-mobile": showBurger ? "block" : "none",
+  };
   return (
     <div className="home">
       {moods
@@ -91,10 +188,7 @@ const Home = ({
         setIsFilter={setIsFilter}
         setMood={setMood}
       />
-      <div
-        className="side-bar"
-        style={{ "--display-mobile": showBurger ? "block" : "none" }}
-      >
+      <div className="side-bar" style={BurgerStyles}>
         {genreList && (
           <SideBar
             handleMoodChange={handleMoodChange}
@@ -118,10 +212,7 @@ const Home = ({
           onClick={() => {
             window.location.href = "http://localhost:3000";
           }}
-          onKeyPress={() => {
-            window.location.href = "http://localhost:3000";
-          }}
-          tabIndex="0"
+          tabIndex={0}
         >
           <img src={logomobile} alt="logo-mobile" />
         </div>
