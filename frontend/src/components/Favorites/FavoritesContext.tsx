@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 import PropTypes from "prop-types";
 
 interface FavoritesContextType {
@@ -7,7 +7,7 @@ interface FavoritesContextType {
 }
 
 interface FavoritesProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const FavoritesContext = createContext<FavoritesContextType>({
@@ -23,11 +23,10 @@ export function FavoritesProvider({ children }: FavoritesProviderProps) {
       if (prevFavorites.includes(id)) {
         prevFavorites.splice(i, 1);
         return [...prevFavorites];
-       } else {
-         return [...prevFavorites, id]
-       }
-    }
-    );
+      } else {
+        return [...prevFavorites, id];
+      }
+    });
   };
 
   const contextValue = {

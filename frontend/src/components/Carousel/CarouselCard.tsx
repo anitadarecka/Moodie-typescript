@@ -41,7 +41,7 @@ const CarouselCard = ({
     "--opacity-mobile": offset !== 0 && 0,
     "--transform-transition": transitionEnabled ? "transform 0.3s linear" : "",
   };
-  const { onChange } = useDescription();
+  const { setShowDescription } = useDescription();
   const { favorites, handleFavorites } = useFavorites();
   const isFavorite = favorites.includes(movieId);
   const stylesHeart: StylesProps = {
@@ -49,7 +49,7 @@ const CarouselCard = ({
   };
   const handleShowModal = (id: number) => {
     setModalId(movieId);
-    onChange(true);
+    setShowDescription(true);
   };
   return (
     <div

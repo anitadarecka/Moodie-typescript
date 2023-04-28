@@ -31,7 +31,7 @@ type CarouselProps = {
 };
 
 const Carousel = ({ mood, carouselData }: CarouselProps) => {
-  const { value } = useDescription();
+  const { showDescription } = useDescription();
   const [active, setActive] = useState(10);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
   const prev = () => {
@@ -173,7 +173,7 @@ const Carousel = ({ mood, carouselData }: CarouselProps) => {
           />
         </div>
       )}
-      {value && (
+      {showDescription && (
         <div className="movie-description-window">
           <MovieDescription movieId={modalId!} />
         </div>
