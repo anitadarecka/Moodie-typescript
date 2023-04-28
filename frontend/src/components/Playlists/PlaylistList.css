@@ -21,15 +21,3 @@
   margin: 0vh auto;
   padding-top: 5vh;
 }
-
-@media only screen and (max-width: 767px) {
-  .playlist-title {
-    display: flex;
-    align-items: flex-start;
-  }
-
-  .playlist-list {
-    align-items: flex-start;
-    margin-left: 10vw;
-  }
-}

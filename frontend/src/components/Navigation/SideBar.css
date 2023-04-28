@@ -68,7 +68,6 @@
 }
 
 .sidebar li:hover {
-  /* transform: scale(1.2); */
   letter-spacing: 2px;
 }
 
@@ -127,93 +126,4 @@ ul {
 
 .side-bar-mobile {
   display: none;
-}
-
-/* // Mobile Version // */
-
-@media only screen and (max-width: 767px) {
-  .logo-desktop img {
-    display: none;
-  }
-
-  .side-bar {
-    display: var(--display-mobile);
-    position: absolute;
-    animation: menu-extend 0.5s linear;
-    width: 100%;
-    height: 100vh;
-    margin-top: 8vh;
-    z-index: 100;
-    backdrop-filter: var(--blur-hover);
-    font-size: 2rem;
-  }
-
-  @keyframes menu-extend {
-    0% {
-      transform: translate(-200%);
-    }
-    100% {
-      transform: translate(0%);
-    }
-  }
-
-  .sidebar-items {
-    margin-left: 5vh;
-    margin-top: 5vh;
-    width: 80%;
-  }
-
-  .side-bar-mobile {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: black;
-    width: 100%;
-    padding: 1.5vh;
-  }
-
-  .side-bar-mobile input {
-    height: 4vh;
-    margin-top: 1vh;
-  }
-
-  .logo-mobile {
-    display: inline;
-  }
-
-  .logo-mobile img {
-    width: 6vh;
-  }
-
-  .sidebar h3 {
-    color: var(--text-color);
-    font-size: 1.55rem;
-  }
-
-  .sidebar ul {
-    font-size: 1.3rem;
-  }
-
-  .favoris-menu {
-    font-size: 0.8em;
-  }
-
-  .genres {
-    font-size: 0.8em;
-    height: 30vh;
-  }
-
-  .mood-btns input {
-    width: 70px;
-    height: 70px;
-  }
-
-  .mood-btns {
-    gap: 15px;
-  }
-
-  .footer-menu {
-    display: none;
-  }
 }

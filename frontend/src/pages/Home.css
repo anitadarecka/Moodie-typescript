@@ -90,26 +90,3 @@ h4 {
   border-top: 1px solid var(--sidebar-bg-color);
   margin: 3vh 3vh;
 }
-
-/* // Mobile Version // */
-
-@media only screen and (max-width: 767px) {
-  .mood-title h1 {
-    font-size: 1.7rem;
-    margin-top: 7%;
-  }
-
-  .content {
-    width: 100%;
-    margin-top: 8vh;
-  }
-
-  .movie-cards {
-    display: flex;
-    flex-direction: inherit;
-  }
-
-  .playlistlist {
-    margin-left: 10vw;
-  }
-}
